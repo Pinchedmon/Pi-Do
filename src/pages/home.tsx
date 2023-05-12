@@ -1,7 +1,9 @@
 import React from "react";
 import Particle from "../components/particles";
+import { useNavigate } from "react-router-dom";
 
-const home = () => {
+const Home = () => {
+  const navigate = useNavigate();
   return (
     <div className="h-full bg-[#ededed]">
       <div className="absolute top-8 left-0 right-0 text-2xl font-medium text-center">
@@ -22,7 +24,10 @@ const home = () => {
             </div>
           </div>
           <div className="mt-4">
-            <button className="rounded-2xl bg-black text-white py-4 px-8 text- ">
+            <button
+              onClick={() => navigate("/")}
+              className="rounded-2xl bg-black text-white py-4 px-8 text- "
+            >
               Попробовать
             </button>
           </div>
@@ -34,4 +39,4 @@ const home = () => {
     </div>
   );
 };
-export default home;
+export default Home;
