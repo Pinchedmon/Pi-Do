@@ -18,7 +18,7 @@ function Particle() {
       init={particlesInit}
       loaded={particlesLoaded}
       options={{
-        fpsLimit: 120,
+        fpsLimit: 60,
         interactivity: {
           events: {
             onClick: {
@@ -33,7 +33,7 @@ function Particle() {
           },
           modes: {
             push: {
-              quantity: 4,
+              quantity: 2,
             },
             repulse: {
               distance: 200,
@@ -43,13 +43,13 @@ function Particle() {
         },
         particles: {
           color: {
-            value: "#000000",
+            value: "#2d2d2d",
           },
           links: {
             color: "#9e9e9e",
             distance: 150,
             enable: true,
-            opacity: 0.5,
+            opacity: 0.3,
             width: 1,
           },
           collisions: {
@@ -62,7 +62,7 @@ function Particle() {
               default: "bounce",
             },
             random: false,
-            speed: 1,
+            speed: 0.3,
             straight: false,
           },
           number: {
@@ -73,7 +73,7 @@ function Particle() {
             value: 80,
           },
           opacity: {
-            value: 0.5,
+            value: 0.2,
           },
           shape: {
             type: "circle",

@@ -5,23 +5,26 @@ import Preview from "./pages/Preview";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import { AuthContextProvider } from "./context/AuthContext";
 
 function App() {
   return (
     <div className="w-full h-full ">
-      <Routes>
-        <Route element={<Preview />} path="/" />
-        <Route
-          element={
-            // <ProtectedRoute>
-            <Main />
-            //</ProtectedRoute>
-          }
-          path="/home"
-        />
-        <Route element={<Login />} path="/login" />
-        <Route element={<Signup />} path="/signup" />
-      </Routes>
+      <AuthContextProvider>
+        <Routes>
+          <Route element={<Preview />} path="/" />
+          <Route
+            element={
+              // <ProtectedRoute>
+              <Main />
+              //</ProtectedRoute>
+            }
+            path="/home"
+          />
+          <Route element={<Login />} path="/login" />
+          <Route element={<Signup />} path="/signup" />
+        </Routes>
+      </AuthContextProvider>
     </div>
   );
 }
