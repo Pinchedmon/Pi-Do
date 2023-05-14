@@ -1,0 +1,44 @@
+import React from "react";
+import { useNavigate } from "react-router-dom";
+
+const Login = () => {
+  let navigate = useNavigate();
+  return (
+    <div className="h-full bg-[#ededed]">
+      <div className="fixed w-full px-4 py-24 z-50">
+        <div className="max-w-[450px] h-[600px] mx-auto text-white">
+          <div className="max-w-[320px] mx-auto py-16">
+            <h1 className="text-3xl font-bold text-black/60 tracking-widest ">
+              Вход
+            </h1>
+            <form className="w-full flex flex-col py-4">
+              <input
+                className="my-2 border-2 rounded-md bg-[#c4c4c4]/20  border-[#c4c4c4]/40 text-gray-500 py-3 px-6 tracking-widest"
+                type="email"
+                placeholder="Почта"
+              />
+              <input
+                className="my-2 border-2 rounded-md bg-[#c4c4c4]/20  border-[#c4c4c4]/40 text-gray-500 py-3 px-6 tracking-widest"
+                type="password"
+                placeholder="Пароль"
+              />
+              <button className="my-2 border-2 rounded-md bg-black/40 border-[#c4c4c4]/40 text-gray-100 py-3 px-6 tracking-widest">
+                Войти
+              </button>
+              <p className="py-2">
+                <span
+                  className="text-gray-500 tracking-widest"
+                  onClick={() => navigate("/signup")}
+                >
+                  Зарегистрироваться
+                </span>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Login;

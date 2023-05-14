@@ -25,7 +25,7 @@ const Home = () => {
           </div>
           <div className="mt-4">
             <button
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/home")}
               className="rounded-2xl bg-black text-white py-4 px-8 text- "
             >
               Попробовать
