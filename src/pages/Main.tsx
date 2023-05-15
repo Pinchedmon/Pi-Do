@@ -1,16 +1,42 @@
 import React from "react";
+import { UserAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
-const main = () => {
+const Main = () => {
+  const { user, logOut } = UserAuth();
+  let navigate = useNavigate();
   return (
     <div className="h-full bg-[#ededed] grid grid-cols-[max-content_1fr]  grid-rows-[100px]">
-      <div className="border-b flex justify-center items-center bg-[#c4c4c4]/20 border-black/10 pl-[100px] text-gray-600/70 pr-[100px] text-3xl tracking-wider font-black text-center">
+      <div className="border-b flex justify-center items-center bg-[#c4c4c4]/20 border-black/10 pl-[60px] text-gray-600/70 pr-[60px] text-3xl tracking-wider font-black text-center">
         Pi - Do
       </div>
       <div className="border-b items-center flex border-l border-black/10">
         <div className="flex items-center ml-auto mr-6">
-          <button className="border-2 rounded-md bg-[#c4c4c4]/20 mr-4 border-[#c4c4c4]/40 text-gray-500 py-3 px-6 tracking-widest">
-            Аккаунт
-          </button>
+          {user ? (
+            <>
+              <button className="border-2 rounded-md bg-[#c4c4c4]/20 mr-4 border-[#c4c4c4]/40 text-gray-500 py-3 px-6 tracking-widest">
+                {user.displayName}
+              </button>
+              <button
+                onClick={logOut}
+                className="border-2 rounded-md bg-[#c4c4c4]/20 mr-4 border-[#c4c4c4]/40 text-red-500/70 py-3 px-3 tracking-widest"
+              >
+                Выйти
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                onClick={() => navigate("/signup")}
+                className="border-2 rounded-md bg-[#c4c4c4]/20 mr-4 border-[#c4c4c4]/40 text-gray-500 py-3 px-6 tracking-widest"
+              >
+                Зарегистрироваться
+              </button>
+              <button className="border-2 rounded-md bg-[#c4c4c4]/20 mr-4 border-[#c4c4c4]/40 text-gray-500 py-3 px-6 tracking-widest">
+                Войти
+              </button>
+            </>
+          )}
           <button className="border-2 rounded-md bg-[#c4c4c4]/20 border-[#c4c4c4]/40 text-gray-500 p-3">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +55,7 @@ const main = () => {
           </button>
         </div>
       </div>
-      <div className="bg-[#c4c4c4]/20 flex pr-12 justify-center align-center">
+      <div className="bg-[#c4c4c4]/20 flex pr-6 justify-center align-center">
         <div className="flex mt-12 flex-col">
           <div className="flex mb-8 items-center">
             <div className="mr-4 text-black/60">
@@ -64,4 +90,4 @@ const main = () => {
   );
 };
 
-export default main;
+export default Main;

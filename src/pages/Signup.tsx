@@ -22,7 +22,7 @@ const Signup = () => {
     try {
       await signUp(email, password);
       await updateProfile(user, { displayName: name });
-      navigate("/");
+      navigate("/home");
     } catch (error: any) {
       console.log(error);
       setError(error.message);

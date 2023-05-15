@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserAuth } from "../context/AuthContext";
 
 const Login = () => {
   let navigate = useNavigate();
+  const { logIn } = UserAuth();
+  let [email, setEmail] = useState("");
+  let [password, setPassword] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      await logIn(email, password);
+      navigate("/home");
+    } catch (error: any) {
+      console.log(error);
+    }
+  };
   return (
     <div className="h-full bg-[#ededed]">
       <div className="fixed w-full px-4 py-24 z-50">
@@ -11,16 +25,20 @@ const Login = () => {
             <h1 className="text-3xl font-bold text-black/60 tracking-widest ">
               Вход
             </h1>
-            <form className="w-full flex flex-col py-4">
+            <form onSubmit={handleSubmit} className="w-full flex flex-col py-4">
               <input
                 className="my-2 border-2 rounded-md bg-[#c4c4c4]/20  border-[#c4c4c4]/40 text-gray-500 py-3 px-6 tracking-widest"
                 type="email"
                 placeholder="Почта"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
               <input
                 className="my-2 border-2 rounded-md bg-[#c4c4c4]/20  border-[#c4c4c4]/40 text-gray-500 py-3 px-6 tracking-widest"
                 type="password"
                 placeholder="Пароль"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <button className="my-2 border-2 rounded-md bg-black/40 border-[#c4c4c4]/40 text-gray-100 py-3 px-6 tracking-widest">
                 Войти

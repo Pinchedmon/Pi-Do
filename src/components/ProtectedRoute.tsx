@@ -5,9 +5,9 @@ import { Navigate } from "react-router-dom";
 const ProtectedRoute = ({ children }: any) => {
   const { user } = UserAuth();
   if (!user) {
-    return <Navigate to="/home" />;
+    return <Navigate to="/login" />;
   }
-  return <div>{children}</div>;
+  return <div className="h-full">{children}</div>;
 };
 
 export default ProtectedRoute;
