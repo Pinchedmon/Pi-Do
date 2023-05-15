@@ -21,7 +21,9 @@ const Signup = () => {
     e.preventDefault();
     try {
       await signUp(email, password);
-      await updateProfile(user, { displayName: name });
+      if (user) {
+        await updateProfile(user, { displayName: name });
+      }
       navigate("/home");
     } catch (error: any) {
       console.log(error);

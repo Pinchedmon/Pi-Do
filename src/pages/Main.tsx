@@ -7,15 +7,21 @@ const Main = () => {
   let navigate = useNavigate();
   return (
     <div className="h-full bg-[#ededed] grid grid-cols-[max-content_1fr]  grid-rows-[100px]">
-      <div className="border-b flex justify-center items-center bg-[#c4c4c4]/20 border-black/10 pl-[60px] text-gray-600/70 pr-[60px] text-3xl tracking-wider font-black text-center">
+      <div
+        onClick={() => navigate("/home")}
+        className="border-b flex justify-center items-center bg-[#c4c4c4]/20 border-black/10 pl-[60px] text-gray-600/70 pr-[60px] text-3xl tracking-wider font-black text-center"
+      >
         Pi - Do
       </div>
       <div className="border-b items-center flex border-l border-black/10">
         <div className="flex items-center ml-auto mr-6">
           {user ? (
             <>
-              <button className="border-2 rounded-md bg-[#c4c4c4]/20 mr-4 border-[#c4c4c4]/40 text-gray-500 py-3 px-6 tracking-widest">
-                {user.displayName}
+              <button
+                onClick={() => navigate("/profile")}
+                className="border-2 rounded-md bg-[#c4c4c4]/20 mr-4 border-[#c4c4c4]/40 text-gray-500 py-3 px-6 tracking-widest"
+              >
+                {user.email}
               </button>
               <button
                 onClick={logOut}

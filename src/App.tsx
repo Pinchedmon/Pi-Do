@@ -23,7 +23,7 @@ function App() {
             path="/home"
           />
           <Route element={<Login />} path="/login" />
-          <Route element={<Profile />} path="/login" />
+          <Route element={<Profile />} path="/profile" />
           <Route element={<Signup />} path="/signup" />
         </Routes>
       </AuthContextProvider>
