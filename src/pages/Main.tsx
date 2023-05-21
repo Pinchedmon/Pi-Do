@@ -1,31 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import { UserAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 const Main = () => {
   const { user, logOut } = UserAuth();
   let navigate = useNavigate();
+  const [value, setValue] = useState("");
+  console.log(value);
   return (
     <div className="h-full bg-[#ededed] grid grid-cols-[max-content_1fr]  grid-rows-[100px]">
       <div
         onClick={() => navigate("/home")}
-        className="border-b flex justify-center items-center bg-[#c4c4c4]/20 border-black/10 pl-[60px] text-gray-600/70 pr-[60px] text-3xl tracking-wider font-black text-center"
+        className="flex justify-center items-center bg-[#c4c4c4]/20  pl-[60px] text-gray-600/70 pr-[60px] text-3xl tracking-wider font-black text-center"
       >
         Pi - Do
       </div>
-      <div className="border-b items-center flex border-l border-black/10">
+      <div className="items-center flex  ">
         <div className="flex items-center ml-auto mr-6">
           {user ? (
             <>
               <button
                 onClick={() => navigate("/profile")}
-                className="border-2 rounded-md bg-[#c4c4c4]/20 mr-4 border-[#c4c4c4]/40 text-gray-500 py-3 px-6 tracking-widest"
+                className="font-bold rounded-md bg-[#c4c4c4]/20 mr-4 text-gray-500 py-3 px-6 tracking-widest"
               >
                 {user.email}
               </button>
               <button
                 onClick={logOut}
-                className="border-2 rounded-md bg-[#c4c4c4]/20 mr-4 border-[#c4c4c4]/40 text-red-500/70 py-3 px-3 tracking-widest"
+                className="font-bold rounded-md bg-[#c4c4c4]/20 mr-4 text-red-500/70 py-3 px-3 tracking-widest"
               >
                 Выйти
               </button>
@@ -34,21 +38,21 @@ const Main = () => {
             <>
               <button
                 onClick={() => navigate("/signup")}
-                className="border-2 rounded-md bg-[#c4c4c4]/20 mr-4 border-[#c4c4c4]/40 text-gray-500 py-3 px-6 tracking-widest"
+                className=" rounded-md bg-[#c4c4c4]/20 mr-4 text-gray-500 py-3 px-6 tracking-widest"
               >
                 Зарегистрироваться
               </button>
-              <button className="border-2 rounded-md bg-[#c4c4c4]/20 mr-4 border-[#c4c4c4]/40 text-gray-500 py-3 px-6 tracking-widest">
+              <button className=" rounded-md bg-[#c4c4c4]/20 mr-4 text-gray-500 py-3 px-6 tracking-widest">
                 Войти
               </button>
             </>
           )}
-          <button className="border-2 rounded-md bg-[#c4c4c4]/20 border-[#c4c4c4]/40 text-gray-500 p-3">
+          <button className=" rounded-md bg-[#c4c4c4]/20 text-gray-500 p-3">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke-width="1.5"
+              stroke-width="1.8"
               stroke="currentColor"
               className="w-6 h-6"
             >
@@ -91,7 +95,9 @@ const Main = () => {
           </div>
         </div>
       </div>
-      <div className="border-l border-black/10"></div>
+      <div className="mx-4  mb-4 border-2 border-black/10 p-2 rounded-xl">
+        <ReactQuill theme="snow" value={value} onChange={setValue} />
+      </div>
     </div>
   );
 };

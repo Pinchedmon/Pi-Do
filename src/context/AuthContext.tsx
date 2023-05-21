@@ -16,7 +16,7 @@ type context = {
 };
 const AuthContext = createContext<any>(null);
 export function AuthContextProvider({ children }: any) {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState([]);
   //   const [store, setStore] = useState<any>();
   function signUp(email: string, password: string) {
     createUserWithEmailAndPassword(auth, email, password);
@@ -37,7 +37,11 @@ export function AuthContextProvider({ children }: any) {
   function logIn(email: string, password: string) {
     return signInWithEmailAndPassword(auth, email, password);
   }
-
+  function refetch() {
+    onAuthStateChanged(auth, (currentUser: any) => {
+      setUser(currentUser);
+    });
+  }
   function logOut() {
     return signOut(auth);
   }
@@ -54,7 +58,7 @@ export function AuthContextProvider({ children }: any) {
   });
 
   return (
-    <AuthContext.Provider value={{ signUp, logIn, logOut, user }}>
+    <AuthContext.Provider value={{ signUp, logIn, logOut, refetch, user }}>
       {children}
     </AuthContext.Provider>
   );
