@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { UserAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import ReactQuill from "react-quill";
+
 import "react-quill/dist/quill.snow.css";
 
 const Main = () => {
@@ -95,9 +95,7 @@ const Main = () => {
           </div>
         </div>
       </div>
-      <div className="mx-4  mb-4 border-2 border-black/10 p-2 rounded-xl">
-        <ReactQuill theme="snow" value={value} onChange={setValue} />
-      </div>
+      <div className="mx-4  mb-4 border-2 border-black/10 p-2 rounded-xl"></div>
     </div>
   );
 };
