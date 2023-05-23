@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { UserAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
-import "react-quill/dist/quill.snow.css";
-
 const Main = () => {
   const { user, logOut } = UserAuth();
   let navigate = useNavigate();
