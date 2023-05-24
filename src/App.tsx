@@ -20,7 +20,7 @@ function App() {
                 <Main />
               </ProtectedRoute>
             }
-            path="/home"
+            path="/home*"
           />
           <Route element={<Login />} path="/login" />
           <Route element={<Profile />} path="/profile" />

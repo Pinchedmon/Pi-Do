@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { UserAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import CreateTask from "../components/CreateTask";
 
 const Main = () => {
   const { user, logOut } = UserAuth();
@@ -8,7 +9,7 @@ const Main = () => {
   const [value, setValue] = useState("");
   console.log(value);
   return (
-    <div className="h-full bg-[#ededed] grid grid-cols-[max-content_1fr]  grid-rows-[100px]">
+    <div className="h-screen bg-[#ededed] grid grid-cols-[max-content_1fr]  grid-rows-[100px]">
       <div
         onClick={() => navigate("/home")}
         className="flex justify-center items-center bg-[#c4c4c4]/20  pl-[60px] text-gray-600/70 pr-[60px] text-3xl tracking-wider font-black text-center"
@@ -63,37 +64,29 @@ const Main = () => {
           </button>
         </div>
       </div>
-      <div className="bg-[#c4c4c4]/20 flex pr-6 justify-center align-center">
-        <div className="flex mt-12 flex-col">
-          <div className="flex mb-8 items-center">
-            <div className="mr-4 text-black/60">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                className="w-8 h-8"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"
-                />
-              </svg>
-            </div>
-            <div className=" tracking-widest text-black/60 text-xl">To-dos</div>
-          </div>
-          <div className="flex mb-2 text-sm text-black/30">
-            <div>Последние</div>
-          </div>
-          <div className="flex mb-2 text-sm">
-            <div className="mr-4">cartinka</div>
-            <div>To-dos</div>
-          </div>
-        </div>
+      <div className="bg-[#c4c4c4]/20 flex pr-6 justify-center align-center"></div>
+      <div className="">
+        <Routes>
+          <Route element={<CreateTask />} path="/create" />
+          <Route
+            element={
+              <div className="flex justify-between">
+                <div className="bg-black/10 p-3 rounded-r-3xl w-64 text-black/50 text-lg">
+                  Твои задачи: 0
+                </div>
+
+                <button
+                  onClick={() => navigate("/home/create")}
+                  className="bg-black/10 p-3 rounded-l-3xl w-36 text-black/50 text-lg"
+                >
+                  Создать
+                </button>
+              </div>
+            }
+            path="/"
+          />
+        </Routes>
       </div>
-      <div className="mx-4  mb-4 border-2 border-black/10 p-2 rounded-xl"></div>
     </div>
   );
 };

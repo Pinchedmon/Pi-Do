@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import ProgressBar from "@ramonak/react-progress-bar";
 import { UserAuth } from "../context/AuthContext";
 import { updateProfile } from "firebase/auth";
+import PreviewLogo from "../components/PreviewLogo";
 
 const Signup = () => {
   const { user, signUp } = UserAuth();
@@ -56,8 +57,9 @@ const Signup = () => {
     }
   };
   return (
-    <div className="h-full bg-[#ededed]">
-      <div className="fixed w-full px-4 py-24 z-50">
+    <div className="flex flex-col md:flex-row h-full bg-[#ededed]">
+      <PreviewLogo />
+      <div className="basis-2/3 w-full px-4 py-24 z-50">
         <div className="max-w-[450px] h-[600px] mx-auto text-white">
           <div className="max-w-[320px] mx-auto py-16">
             {step === 1 && (
