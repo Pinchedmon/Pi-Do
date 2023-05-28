@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ProgressBar from "@ramonak/react-progress-bar";
-import { UserAuth } from "../context/AuthContext";
+import { UserAuth } from "../../context/AuthContext";
 import { updateProfile } from "firebase/auth";
-import PreviewLogo from "../components/PreviewLogo";
+import PreviewLogo from "../../components/PreviewLogo";
 
 const Signup = () => {
   const { user, signUp } = UserAuth();

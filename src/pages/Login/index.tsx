@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserAuth } from "../context/AuthContext";
-import PreviewLogo from "../components/PreviewLogo";
+import { UserAuth } from "../../context/AuthContext";
+import PreviewLogo from "../../components/PreviewLogo";
 
 const Login = () => {
   let navigate = useNavigate();

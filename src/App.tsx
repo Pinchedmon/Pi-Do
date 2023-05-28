@@ -1,12 +1,12 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Main from "./pages/Main";
-import Preview from "./pages/Preview";
 import ProtectedRoute from "./components/ProtectedRoute";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
 import { AuthContextProvider } from "./context/AuthContext";
-import Profile from "./pages/Profile";
+import Preview from "./pages/Preview/index";
+import Login from "./pages/Login/index";
+import Main from "./pages/Main/index";
+import Profile from "./pages/Profile/index";
+import Signup from "./pages/Signup/index";
 
 function App() {
   return (
